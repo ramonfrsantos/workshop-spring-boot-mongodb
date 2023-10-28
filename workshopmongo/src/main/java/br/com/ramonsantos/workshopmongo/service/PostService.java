@@ -1,5 +1,7 @@
 package br.com.ramonsantos.workshopmongo.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +22,8 @@ public class PostService {
 		return post;
 	}
 
-	public Post insert(Post post) {
-		return repository.insert(post);
-	}
-
-	public void delete(String id) {
-		findById(id);
-		repository.deleteById(id);
+	public List<Post> findByTitle(String text) {
+		return repository.findByTitleContainingIgnoreCase(text);
 	}
 
 }
